@@ -19,7 +19,7 @@ public class WebController {
     @GetMapping("/animation")
     public String animation(Model model) {
         model.addAttribute("title", "문자 슬라이드");
-        model.addAttribute("animationText", "Spring Boot Animation!");
+        model.addAttribute("animationText", "Just a sample text");
         return "animation";
     }
     @GetMapping("/gallery")
