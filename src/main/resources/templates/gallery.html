@@ -24,8 +24,7 @@
       <h2>취미 갤러리</h2>
       <div class="image-grid">
         <div class="image-item" th:each="image : ${images}">
-          <img th:src="${image}" th:alt="'Gallery Image ' + ${imageStat.count}"
-               onclick="openModal(this)">
+          <img th:src="@{${image}}" th:alt="'Gallery Image ' + ${imageStat.count}" onclick="openModal(this)">
           <p th:text="'이미지 ' + ${imageStat.count}">이미지</p>
         </div>
       </div>

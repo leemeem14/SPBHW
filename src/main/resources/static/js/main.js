@@ -46,10 +46,10 @@ function initializeHome() {
 // 애니메이션 페이지 초기화
 function initializeAnimation() {
     console.log('애니메이션 페이지 초기화');
-    const rotatingText = document.getElementById('rotatingText');
-    if (rotatingText) {
-        const originalText = rotatingText.dataset.text || rotatingText.textContent;
-        rotatingText.dataset.originalText = originalText;
+    const slidingText = document.getElementById('slidingText');
+    if (slidingText) {
+        const originalText = slidingText.dataset.text || slidingText.textContent;
+        slidingText.dataset.originalText = originalText;
     }
 }
 
@@ -80,8 +80,8 @@ function navigateTo() {
 
 // 애니메이션 제어 함수들
 function startAnimation() {
-    const rotatingText = document.getElementById('rotatingText');
-    if (!rotatingText) return;
+    const slidingText = document.getElementById('slidingText');
+    if (!slidingText) return;
 
     if (isAnimating) {
         console.log('이미 애니메이션이 실행 중입니다.');
@@ -91,11 +91,11 @@ function startAnimation() {
     isAnimating = true;
     currentIndex = 0;
 
-    const originalText = rotatingText.dataset.originalText || rotatingText.textContent;
+    const originalText = slidingText.dataset.originalText || slidingText.textContent;
     console.log('애니메이션 시작:', originalText);
 
     animationTimer = setInterval(() => {
-        doRotate(rotatingText, originalText);
+        doRotate(slidingText, originalText);
     }, 200);
 }
 
@@ -110,11 +110,11 @@ function stopAnimation() {
 
 function resetAnimation() {
     stopAnimation();
-    const rotatingText = document.getElementById('rotatingText');
-    if (rotatingText) {
-        const originalText = rotatingText.dataset.originalText || 'Welcome to Spring Boot!';
-        rotatingText.innerHTML = `<span>${originalText}</span>`;
-        rotatingText.classList.remove('rotating');
+    const slidingText = document.getElementById('slidingText');
+    if (slidingText) {
+        const originalText = slidingText.dataset.originalText || '넘나 피곤한거시에오';
+        slidingText.innerHTML = `<span>${originalText}</span>`;
+        slidingText.classList.remove('sliding');
         currentIndex = 0;
         console.log('애니메이션 리셋');
     }
@@ -132,7 +132,7 @@ function doRotate(element, text) {
         rotatedText += chars[charIndex];
     }
 
-    element.innerHTML = `<span class="rotating">${rotatedText}</span>`;
+    element.innerHTML = `<span class="sliding">${rotatedText}</span>`;
     currentIndex = (currentIndex + 1) % chars.length;
 
     // 한 바퀴 돌면 정지
@@ -224,3 +224,22 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+function splitText() {
+    const box = document.getElementById('slidingText');
+    const text = box.dataset.text || '';
+    box.innerHTML = '';                       // 초기화
+    [...text].forEach((ch,i) => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        span.classList.add('char');
+        span.style.animationDelay = `${i*0.05}s`; // 글자마다 지연
+        box.appendChild(span);
+    });
+}
+
+function startSlide() { splitText(); }
+
+function resetSlide() {
+    document.getElementById('slidingText').innerHTML = '';
+}
+document.addEventListener('DOMContentLoaded', splitText);

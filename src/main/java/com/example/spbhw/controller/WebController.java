@@ -18,30 +18,29 @@ public class WebController {
 
     @GetMapping("/animation")
     public String animation(Model model) {
-        model.addAttribute("title", "애니메이션 페이지");
-        model.addAttribute("rotatingText", "겉표지보다 큰 몇 향수류");
+        model.addAttribute("title", "문자 슬라이드");
+        model.addAttribute("animationText", "Spring Boot Animation!");
         return "animation";
     }
-
     @GetMapping("/gallery")
     public String gallery(Model model) {
         model.addAttribute("title", "취미 갤러리");
         model.addAttribute("description", "핸드폰에서 가져온 제 취미와 관련된 사진들입니다.");
 
-        // 이미지 파일 목록 (실제로는 서비스에서 가져올 수 있음)
+        // ⭐ 핵심 수정: 파일명 앞에 /images/ 경로 추가
         String[] images = {
-                "KakaoTalk_20240611_132807030_01.jpg",
-                "KakaoTalk_20240611_132807030_02.jpg",
-                "KakaoTalk_20240611_132807030_03.jpg",
-                "KakaoTalk_20240611_132807030_04.jpg",
-                "KakaoTalk_20240611_132807030_05.jpg",
-                "KakaoTalk_20240611_132807030_06.jpg",
-                "KakaoTalk_20240611_132807030_07.jpg",
-                "KakaoTalk_20240611_132807030_08.jpg",
-                "KakaoTalk_20240611_132807030_09.jpg",
-                "KakaoTalk_20240611_132807030_10.jpg",
-                "KakaoTalk_20240611_132807030_11.jpg",
-                "dDdliS9lDLHUEunjEdVY1ZWoS1sfi2F3b0uaxReoaC5FrddP3O8GFGUe8vkleQEjBDP4vtA_vDbs0Sxt8z8XbQ.jpg"
+                "/images/KakaoTalk_20240611_132807030_01.jpg",
+                "/images/KakaoTalk_20240611_132807030_02.jpg",
+                "/images/KakaoTalk_20240611_132807030_03.jpg",
+                "/images/KakaoTalk_20240611_132807030_04.jpg",
+                "/images/KakaoTalk_20240611_132807030_05.jpg",
+                "/images/KakaoTalk_20240611_132807030_06.jpg",
+                "/images/KakaoTalk_20240611_132807030_07.jpg",
+                "/images/KakaoTalk_20240611_132807030_08.jpg",
+                "/images/KakaoTalk_20240611_132807030_09.jpg",
+                "/images/KakaoTalk_20240611_132807030_10.jpg",
+                "/images/KakaoTalk_20240611_132807030_11.jpg",
+                "/images/dDdliS9lDLHUEunjEdVY1ZWoS1sfi2F3b0uaxReoaC5FrddP3O8GFGUe8vkleQEjBDP4vtA_vDbs0Sxt8z8XbQ.jpg"
         };
         model.addAttribute("images", images);
         return "gallery";
