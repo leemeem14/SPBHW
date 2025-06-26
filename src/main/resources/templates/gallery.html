@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}">갤러리</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1 th:text="${title}">갤러리</h1>
+    <nav>
+      <select id="pageSelector" onchange="navigateTo()">
+        <option value="/" th:selected="${currentPage == 'home'}">메인 페이지</option>
+        <option value="/animation" th:selected="${currentPage == 'animation'}">애니메이션</option>
+        <option value="/gallery" th:selected="${currentPage == 'gallery'}">갤러리</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <div class="gallery-section">
+      <h2>취미 갤러리</h2>
+      <div class="image-grid">
+        <div class="image-item" th:each="image : ${images}">
+          <img th:src="${image}" th:alt="'Gallery Image ' + ${imageStat.count}"
+               onclick="openModal(this)">
+          <p th:text="'이미지 ' + ${imageStat.count}">이미지</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 -->
+    <div id="imageModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="">
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Spring Boot Web Application</p>
+  </footer>
+</div>
+
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>
