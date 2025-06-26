@@ -112,7 +112,7 @@ function resetAnimation() {
     stopAnimation();
     const slidingText = document.getElementById('slidingText');
     if (slidingText) {
-        const originalText = slidingText.dataset.originalText || '넘나 피곤한거시에오';
+        const originalText = slidingText.dataset.originalText || 'Just a sample text';
         slidingText.innerHTML = `<span>${originalText}</span>`;
         slidingText.classList.remove('sliding');
         currentIndex = 0;
