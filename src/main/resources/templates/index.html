@@ -3,56 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${title}">즐겨찾기</title>
+    <title th:text="${title}">메인 페이지</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <div class="container">
     <header>
-        <h1 th:text="${title}">즐겨찾기</h1>
+        <h1 th:text="${title}">메인 페이지</h1>
         <nav>
             <select id="pageSelector" onchange="navigateTo()">
                 <option value="/" th:selected="${currentPage == 'home'}">메인 페이지</option>
-                <option value="/animation" th:selected="${currentPage == 'animation'}">애니메이션</option>
-                <option value="/gallery" th:selected="${currentPage == 'gallery'}">갤러리</option>
+                <option value="/animation" th:selected="${currentPage == 'animation'}">문자 애니메이션</option>
+                <option value="/gallery" th:selected="${currentPage == 'gallery'}">취미 갤러리</option>
             </select>
         </nav>
     </header>
 
     <main>
-        <div class="favorites-section">
-            <h2>즐겨찾기 링크</h2>
-            <div class="link-grid">
-                <div class="link-item">
-                    <a href="https://www.google.com" target="_blank">
-                        <img src="https://www.google.com/favicon.ico" alt="Google">
-                        <span>Google</span>
-                    </a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.youtube.com" target="_blank">
-                        <img src="https://www.youtube.com/favicon.ico" alt="YouTube">
-                        <span>YouTube</span>
-                    </a>
-                </div>
-                <div class="link-item">
-                    <a href="https://github.com" target="_blank">
-                        <img src="https://github.com/favicon.ico" alt="GitHub">
-                        <span>GitHub</span>
-                    </a>
-                </div>
-                <div class="link-item">
-                    <a href="https://stackoverflow.com" target="_blank">
-                        <img src="https://stackoverflow.com/favicon.ico" alt="Stack Overflow">
-                        <span>Stack Overflow</span>
-                    </a>
-                </div>
+        <p th:text="${description}">즐겨찾기 링크와 네비게이션</p>
+
+        <div class="link-grid">
+            <div class="link-item">
+                <a href="https://www.google.com" target="_blank">
+                    <img src="https://www.google.com/favicon.ico" alt="Google">
+                    <span>Google</span>
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="https://www.youtube.com" target="_blank">
+                    <img src="https://www.youtube.com/favicon.ico" alt="YouTube">
+                    <span>YouTube</span>
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="https://github.com" target="_blank">
+                    <img src="https://github.com/favicon.ico" alt="GitHub">
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="https://stackoverflow.com" target="_blank">
+                    <img src="https://stackoverflow.com/favicon.ico" alt="Stack Overflow">
+                    <span>Stack Overflow</span>
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="https://www.dcinside.com" target="_blank">
+                    <img src="https://www.dcinside.com/favicon.ico" alt="DC Inside">
+                    <span>DC Inside</span>
+                </a>
+            </div>
+            <div class="link-item">
+                <a href="https://www.perplexity.ai" target="_blank">
+                    <img src="https://www.perplexity.ai/favicon.ico" alt="Perplexity">
+                    <span>Perplexity</span>
+                </a>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Spring Boot Web Application</p>
+        <p>&copy; 2025 LYH SPRING BOOT TERM PROJECT</p>
     </footer>
 </div>
 

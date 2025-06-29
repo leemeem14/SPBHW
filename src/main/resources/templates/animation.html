@@ -3,42 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title th:text="${title}">애니메이션</title>
-  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+  <title th:text="${title}">문자 슬라이드</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <div class="container">
   <header>
-    <h1 th:text="${title}">애니메이션</h1>
+    <h1 th:text="${title}">텍스트 애니메이션</h1>
     <nav>
       <select id="pageSelector" onchange="navigateTo()">
         <option value="/" th:selected="${currentPage == 'home'}">메인 페이지</option>
-        <option value="/animation" th:selected="${currentPage == 'animation'}">애니메이션</option>
-        <option value="/gallery" th:selected="${currentPage == 'gallery'}">갤러리</option>
+        <option value="/animation" th:selected="${currentPage == 'animation'}">문자 애니메이션</option>
+        <option value="/gallery" th:selected="${currentPage == 'gallery'}">취미 갤러리</option>
       </select>
     </nav>
   </header>
 
   <main>
-    <div class="animation-section">
-      <h2>텍스트 애니메이션</h2>
-      <div class="animation-container">
-        <div id="slidingText" th:data-text="${animationText}">
-          <span th:text="${animationText}">Just a sample text</span>
-        </div>
-        <div class="controls">
-          <button onclick="startSlide()">시작</button>
-          <button onclick="resetSlide()">리셋</button>
-        </div>
+    <div class="animation-container">
+      <div id="slidingText" th:data-text="${animationText}">
+        <span th:text="${animationText}">다람쥐 헌 쳇바퀴에 타고파</span>
+      </div>
+
+      <div class="controls">
+        <button onclick="startSlide()">시작</button>
+        <button onclick="resetSlide()">리셋</button>
       </div>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Spring Boot Web Application</p>
+    <p>&copy; 2025 LYH SPRING BOOT TERM PROJECT</p>
   </footer>
 </div>
 
-<script th:src="@{/js/main.js}" defer></script>
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>
